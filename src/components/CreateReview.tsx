@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { z } from "zod";
+import { useReviewStore } from "../store";
 
 const reviewSchema = z.object({
   firstName: z.string().min(1, "First name is required").max(25),
@@ -30,6 +31,8 @@ const CreateReview = ({ setIsOpen }: Props) => {
   const [formError, setFormError] = useState<any>({});
   const modalRef = useRef<HTMLDivElement | null>(null);
 
+  const { addReview } = useReviewStore();
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -53,24 +56,24 @@ const CreateReview = ({ setIsOpen }: Props) => {
 
   const handleSubmit = async () => {
     const data = reviewSchema.safeParse(reviewInfo);
-
     if (!data.success) {
       const formatted = data.error.format();
       return setFormError(formatted);
     }
-
     const payload = {
       author: data.data.firstName + " " + data.data.lastName,
       content: data.data.content,
     };
 
-    const response = fetch("http://localhost:5000/reviews/add", {
+    const response = await fetch("http://localhost:5000/reviews/add", {
       method: "POST",
       body: JSON.stringify(payload),
       headers: {
         "Content-Type": "application/json",
       },
     });
+    const review = await response.json();
+    addReview(review.data);
     setIsOpen(false);
   };
 
