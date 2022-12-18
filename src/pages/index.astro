@@ -1,37 +1,35 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
+import Review from "../components/Review";
+import Subheader from "../components/Subheader";
 ---
 
 <Layout title="Welcome to Astro.">
-  <main>
-    <h1>Welcome to <span class="text-gradient">Astro</span></h1>
-    <p class="instructions">
-      To get started, open the directory <code>src/pages</code> in your project.<br
-      />
-      <strong>Code Challenge:</strong> Tweak the 'Welcome to Astro' message above.
-    </p>
-    <ul role="list" class="link-card-grid">
-      <Card
-        href="https://docs.astro.build/"
-        title="Documentation"
-        body="Learn how Astro works and explore the official API docs."
-      />
-      <Card
-        href="https://astro.build/integrations/"
-        title="Integrations"
-        body="Supercharge your project with new frameworks and libraries."
-      />
-      <Card
-        href="https://astro.build/themes/"
-        title="Themes"
-        body="Explore a galaxy of community-built starter themes."
-      />
-      <Card
-        href="https://astro.build/chat/"
-        title="Community"
-        body="Come say hi to our amazing Discord community. ❤️"
-      />
+  <main style="max-width: 1260px;">
+    <h1 class="text-3xl w-fit mx-auto">ReStart Program Testimonies</h1>
+    <div class="instructions bg-white shadow-xs border">
+      <Subheader client:only/>
+    </div>
+    <!-- link-card-grid -->
+    <ul role="list" class="flex flex-wrap gap-4">
+      <Review 
+        content={`Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id earum minus
+          placeat impedit, deserunt ducimus quia perferendis ex quisquam doloribus
+          aliquam. Distinctio provident voluptatibus saepe hic culpa. Ratione,
+          nisi debitis!`} 
+        author={"Adnan Ahmed"} 
+        submittedAt={"2 months ago"}/>
+
+      <Review 
+      content={`Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id earum minus
+      placeat impedit, deserunt ducimus quia perferendis ex quisquam doloribus
+      aliquam. Distinctio provident voluptatibus saepe hic culpa. Ratione,
+      nisi debitis!`} 
+      author={"Adnan Ahmed"} 
+      submittedAt={"2 months ago"}/>
+
+ 
     </ul>
   </main>
 </Layout>
@@ -40,7 +38,7 @@ import Card from "../components/Card.astro";
   main {
     margin: auto;
     padding: 1.5rem;
-    max-width: 60ch;
+    max-width: 1260px;
   }
   h1 {
     font-size: 3rem;
@@ -55,11 +53,10 @@ import Card from "../components/Card.astro";
     background-position: 0%;
   }
   .instructions {
-    line-height: 1.6;
     margin: 1rem 0;
-    border: 1px solid rgba(var(--accent), 25%);
+    /* border: 1px solid rgba(var(--accent), 25%); */
+
     background-color: white;
-    padding: 1rem;
     border-radius: 0.4rem;
   }
   .instructions code {
