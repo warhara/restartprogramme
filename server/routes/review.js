@@ -6,8 +6,9 @@ const router = express.Router();
 const dbo = require("../db/conn");
 
 // This section will help you get a list of all the records.
-router.route("/reviews").get(async function (_req, res) {
+router.get("/reviews", async function (_req, res) {
   const dbConnect = dbo.getDb();
+
   dbConnect
     .collection("reviews")
     .find({})
@@ -24,9 +25,6 @@ router.route("/reviews").get(async function (_req, res) {
 // This section will help you create a new record.
 router.post("/reviews/add", function (req, res) {
   const dbConnect = dbo.getDb();
-
-  return res.send("dasd");
-
   const reviewDocument = {
     author: req.body.author,
     content: req.body.content,
@@ -40,7 +38,7 @@ router.post("/reviews/add", function (req, res) {
         res.status(400).send("Error inserting review!");
       } else {
         console.log(`Added a new review with id ${result.insertedId}`);
-        res.status(204).send();
+        res.status(204).json({ data: result.ops[0] });
       }
     });
 });
