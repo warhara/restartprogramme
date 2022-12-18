@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import Review from "../components/Review";
 import Subheader from "../components/Subheader";
+import ReviewList from "../components/ReviewList";
 ---
 
 <Layout title="Welcome to Astro.">
@@ -12,25 +13,7 @@ import Subheader from "../components/Subheader";
       <Subheader client:only/>
     </div>
     <!-- link-card-grid -->
-    <ul role="list" class="flex flex-wrap gap-4">
-      <Review 
-        content={`Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id earum minus
-          placeat impedit, deserunt ducimus quia perferendis ex quisquam doloribus
-          aliquam. Distinctio provident voluptatibus saepe hic culpa. Ratione,
-          nisi debitis!`} 
-        author={"Adnan Ahmed"} 
-        submittedAt={"2 months ago"}/>
-
-      <Review 
-      content={`Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id earum minus
-      placeat impedit, deserunt ducimus quia perferendis ex quisquam doloribus
-      aliquam. Distinctio provident voluptatibus saepe hic culpa. Ratione,
-      nisi debitis!`} 
-      author={"Adnan Ahmed"} 
-      submittedAt={"2 months ago"}/>
-
- 
-    </ul>
+    <ReviewList  client:load/>
   </main>
 </Layout>
 
