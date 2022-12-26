@@ -5,8 +5,13 @@ Through a combination of coursework and hands-on labs, learners will gain the te
 
 The following are Learing objective you will cover;
 >> Computing.....EC2...Elastic Beanstalk...Lanbda...Lightsail
+>> 
 >> Database......RDS...DynamoDB...
+>> 
 >> Storage.......S3...FSx...EFS...S3 Glacier
+>> 
 >> Networking & Content Delivery......VPC...Route 53...CloudFront...API Gateway...
+>> 
 >> Developer Tools......CodePipeline...CodeCommit...CodeDeploy...CodeBuild...Cloud9
+>> 
 >> And Many more.
